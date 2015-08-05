@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Vertical__c</fullName>
-        <label>水平</label>
+        <label>垂直</label>
         <length>200</length>
         <type>Text</type>
     </fields>

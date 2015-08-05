@@ -1,15 +1,15 @@
 /**
 *  Helper apex class to available values in configurations.
-*  Another way to do that is to create new custom metadata types and store those options as records 
+*  Another way to do that is to create new custom metadata types and store those options as records
 */
 public class ConfigurationCustomMetadata {
 
     public static String CONFIG_MD_NAME = 'Configuration__mdt';
-    
-    public static String VERTICAL_PHARMA = 'Pharma';
-    public static String VERTICAL_MEDDEV = 'Meddev';
-    public static String VERTICAL_FINANCIAL= 'Financial';
-    
+
+    public static String VERTICAL_PHARMA = 'ファーマ';
+    public static String VERTICAL_MEDDEV = 'メディカル';
+    public static String VERTICAL_FINANCIAL= '金融';
+
     static public List<SelectOption> VERTICAL_VALUES {
         get {
             if (VERTICAL_VALUES == null) {
@@ -22,11 +22,11 @@ public class ConfigurationCustomMetadata {
         }
         private set;
     }
-    
-    public static String ACCURACY_LEVEL_LOW = 'Low';
-    public static String ACCURACY_LEVEL_MEDIUM = 'Medium';
-    public static String ACCURACY_LEVEL_HIGH = 'High';
-    
+
+    public static String ACCURACY_LEVEL_LOW = '低';
+    public static String ACCURACY_LEVEL_MEDIUM = '中';
+    public static String ACCURACY_LEVEL_HIGH = '高';
+
     static public List<SelectOption> ACCURACY_LEVEL_VALUES {
         get {
             if (ACCURACY_LEVEL_VALUES == null) {
@@ -39,10 +39,10 @@ public class ConfigurationCustomMetadata {
         }
         private set;
     }
-    
+
     static public void addSelectLists(Map<string,List<SelectOption>> selectLists){
-        selectLists.put(CONFIG_MD_NAME+'.Vertical__c',VERTICAL_VALUES);    
-        selectLists.put(CONFIG_MD_NAME+'.AccuracyLevel__c',ACCURACY_LEVEL_VALUES);    
+        selectLists.put(CONFIG_MD_NAME+'.Vertical__c',VERTICAL_VALUES);
+        selectLists.put(CONFIG_MD_NAME+'.AccuracyLevel__c',ACCURACY_LEVEL_VALUES);
     }
 
 }

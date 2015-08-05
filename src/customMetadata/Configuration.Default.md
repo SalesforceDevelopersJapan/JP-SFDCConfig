@@ -7,11 +7,11 @@
 
     <values>
         <field>Vertical__c</field>
-        <value xsi:type="xsd:string">Pharma</value>
+        <value xsi:type="xsd:string">ファーマ</value>
     </values>
     <values>
         <field>AccuracyLevel__c</field>
-        <value xsi:type="xsd:string">High</value>
+        <value xsi:type="xsd:string">高</value>
     </values>
     <values>
         <field>IsSpecial__c</field>

@@ -353,14 +353,14 @@
                                      <input id="createremotesitebtn" type="button" onclick="createRemoteSite();" value="リモートサイト設定の作成"  styleClass="btn-sm btn-primary"/>
                                  </apex:outputPanel>
                                  <div class="form-group">
-                                    <apex:outputLabel value="Is special " for="cbxSPE" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="特別" for="cbxSPE" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                         <apex:inputCheckbox value="{!configurations['0']['IsSpecial__c']}" id="cbxSPE" />
                                      </div>
                                  </div>
 
                                 <div class="form-group">
-                                    <apex:outputLabel value="Vertical" for="slVER" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="選択リスト" for="slVER" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                         <apex:selectList value="{!configurations['0']['Vertical__c']}"
                                            size="1"
@@ -373,7 +373,7 @@
                                 </div>
 
                                <div class="form-group">
-                                    <apex:outputLabel value="Accuracy level" for="slACC" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="精度レベル" for="slACC" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                         <apex:selectList value="{!configurations['0']['AccuracyLevel__c']}"
                                            size="1"
@@ -386,7 +386,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <apex:outputLabel value="Rounding" for="slROU" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="数値" for="slROU" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                          <apex:inputText value="{!configurations['0']['Rounding__c']}" id="slROU" />
                                     </div>
@@ -394,7 +394,7 @@
 
 
                                 <apex:outputPanel layout="block" styleClass="button-block">
-                                    <apex:commandButton id="Save1" value="Save" status="statusLoad" action="{!save}" rerender="form" styleClass="btn-sm btn-primary" />
+                                    <apex:commandButton id="Save1" value="保存" status="statusLoad" action="{!save}" rerender="form" styleClass="btn-sm btn-primary" />
                                 </apex:outputPanel>
                         </apex:pageBlock>
                 </div>
@@ -402,7 +402,7 @@
                         <apex:pageBlock mode="maindetail">
                                 <apex:pageMessages />
                                  <div class="form-group">
-                                    <apex:outputLabel value="Is paid monthly " for="cbxIPM" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="月払い" for="cbxIPM" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                         <apex:inputCheckbox value="{!configurations['1']['IsPaidMonthly__c']}" id="cbxIPM" />
                                      </div>
@@ -416,7 +416,7 @@
                         <apex:pageBlock mode="maindetail">
                                 <apex:pageMessages />
                                  <div class="form-group">
-                                    <apex:outputLabel value="Is dynamic" for="cbxDYN" styleClass="col-sm-4 control-label" />
+                                    <apex:outputLabel value="動的" for="cbxDYN" styleClass="col-sm-4 control-label" />
                                     <div class="col-sm-8 form-control-column">
                                         <apex:inputCheckbox value="{!configurations['2']['IsDynamic__c']}" id="cbxDYN" />
                                      </div>

@@ -27,6 +27,12 @@ var forceDeploy = function(username, password) {
   });
 };
 
+gulp.task("clean",function() {
+  return gulp.src("clean/**/*", {
+    base: "."
+  }).pipe(zip('pkg.zip')).pipe(forceDeploy(setting.sf_username, setting.sf_password));
+});
+
 gulp.task("deploy",function() {
   return gulp.src("src/**/*", {
     base: "."
