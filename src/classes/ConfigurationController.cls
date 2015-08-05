@@ -3,12 +3,12 @@
  */
 
 public class ConfigurationController {
-  
+
     MetadataService.MetadataPort service;
-    
+
     //Configurations currently rendered indexed by TabIndex__c rendered in the UI
     public Map<String,SObject> configurations {get;set;}
-    
+
     //Configuration name indexed by tab
     public Map<String,String>  configurationNameByTab {get;set;}
 
@@ -17,21 +17,21 @@ public class ConfigurationController {
 
     //Maps of available options based on configurations displayed
     public Map<string,List<SelectOption>> selectLists {get;set;}
-    
+
     public static String QUALIFIED_API_NAME_ATTRIBUTE= 'QualifiedApiName';
     public static String MASTER_LABEL_ATTRIBUTE= 'MasterLabel';
-    
+
     public ConfigurationController() {
     	//Initializing the metadata service api
         service = new MetadataService.MetadataPort();
         service.SessionHeader = new MetadataService.SessionHeader_element();
         service.SessionHeader.sessionId = UserInfo.getSessionId();
-     
+
         configurations = new Map<string,SObject>();
         customMetadata = new Map<string,Set<string>>();
         configurationNameByTab = new Map<string,string>();
         selectLists = new Map<string,List<SelectOption>>();
-        
+
         //loading all custom metadata available in the system
         loadCustomMetadataMetadata();
 
@@ -40,12 +40,12 @@ public class ConfigurationController {
 
         //loading values the db
         loadCustomMetadataValues();
-        
+
         idPanelCurrent = '0';
     }
-    
+
     public static String getNamespace(){
-        ApexClass ac = [SELECT NameSpacePrefix 
+        ApexClass ac = [SELECT NameSpacePrefix
                         FROM ApexClass
                         WHERE Name = 'ConfigurationController'];
         string namespace = ac.NameSpacePrefix;
@@ -56,19 +56,19 @@ public class ConfigurationController {
         }
     }
 
-    
+
 /**
   * Dynamic SOQL to query custom metadata values for each custom metadata
   */
-    private void loadCustomMetadataValues(){    
+    private void loadCustomMetadataValues(){
     	for (String entityName : customMetadata.keySet()){
 	        String configurationQuery = 'select ';
-	        Boolean isFirstLoop = true; 
+	        Boolean isFirstLoop = true;
 	        for (String fieldName : customMetadata.get(entityName)) {
 	            if(isFirstLoop){
-	                isFirstLoop = false;    
+	                isFirstLoop = false;
 	            }else{
-	                configurationQuery = configurationQuery+',';    
+	                configurationQuery = configurationQuery+',';
 	            }
 	            configurationQuery = configurationQuery+fieldName;
 	        }
@@ -104,14 +104,14 @@ public class ConfigurationController {
             }
         }
     }
-        
+
     public PageReference save() {
         ApexPages.getMessages().clear();
         List<MetadataService.SaveResult> results = service.updateMetadata(new MetadataService.Metadata[] {
                  transformToCustomMetadata(
                  configurationNameByTab.get(idPanelCurrent).replace('__mdt','.')+(string)configurations.get(idPanelCurrent).get(QUALIFIED_API_NAME_ATTRIBUTE),
                  configurations.get(idPanelCurrent),
-                 customMetadata.get(configurationNameByTab.get(idPanelCurrent))) 
+                 customMetadata.get(configurationNameByTab.get(idPanelCurrent)))
         });
         if(results!=null){
             for(MetadataService.SaveResult saveResult : results){
@@ -122,7 +122,7 @@ public class ConfigurationController {
                 if(saveResult.errors!=null){
                     List<String> messages = new List<String>();
                     messages.add(
-                        (saveResult.errors.size()==1 ? 'Error ' : 'Errors ') + 
+                        (saveResult.errors.size()==1 ? 'Error ' : 'Errors ') +
                             'occured processing component ' + saveResult.fullName + '.');
                     for(MetadataService.Error error : saveResult.errors){
                         messages.add(error.message + ' (' + error.statusCode + ').' + ( error.fields!=null && error.fields.size()>0 ? ' Fields ' + String.join(error.fields, ',') + '.' : '' ) );
@@ -139,10 +139,10 @@ public class ConfigurationController {
 
         return null;
     }
-    
+
 /*
  * Transformation utility to turn the configuration values into custom metadata values
- * This method to modify Metadata is only approved for Custom Metadata Records. Note that the number of custom metadata 
+ * This method to modify Metadata is only approved for Custom Metadata Records. Note that the number of custom metadata
  * values which can be passed in one update has been increased to 200 values (just for custom metadata)
  * We recommend to create new type if more fields are needed.
  * Using https://github.com/financialforcedev/apex-mdapi
@@ -170,25 +170,25 @@ public class ConfigurationController {
 /**
 * Used to remember what panel is selected on the client side so that the right pane is rendered after save
 */
-    
+
     public string idPanelCurrent { get; set; }
-    
+
     public void setPanelCurrent(){
     	idPanelCurrent = Apexpages.currentPage().getParameters().get('idPanel');
     }
-    
+
 
 /**
-* Helper to handle adding remote site programatically the first time the admin user navigate to the screen inspired from 
-* http://andyinthecloud.com/2014/07/29/post-install-apex-metadata-api-configuration-solved/ 
+* Helper to handle adding remote site programatically the first time the admin user navigate to the screen inspired from
+* http://andyinthecloud.com/2014/07/29/post-install-apex-metadata-api-configuration-solved/
 */
 
     public String Host {get;set;}
-    
+
     public String MetadataResponse {get;set;}
- 
+
     public Boolean MetadataConnectionWarning {get;set;}
-        
+
     public PageReference checkMetadataAPIConnection(){
         Host = ApexPages.currentPage().getHeaders().get('Host');
         MetadataConnectionWarning = false;
@@ -199,24 +199,24 @@ public class ConfigurationController {
             queries.add(remoteSites);
             service.listMetadata(queries, 34);
         } catch (System.CalloutException e) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Unable to connect to the Salesforce Metadata API.'));
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'A Remote Site Setting must be created in your org before you can use this tool.'));
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Press the Create Remote Site Setting button to perform this step or refer to the post install step below to perform this manually.'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Salesforce Metadata APIへ接続できません'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'ツールを使い始める前に組織にリモートサイトの設定が必要となります。'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'リモートサイト設定の作成ボタンを押下するか、手動で行うにはインストール前のステップを実行してください'));
 
             MetadataConnectionWarning = true;
         }
         return null;
     }
-    
+
     public PageReference displayMetadataResponse(){
             if(metadataResponse !=null && metadataResponse.length()==0){
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Info, 'Remote Site Setting config_mdapi has been created.' ));
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Info, 'リモートサイト設定 config_mdapi が作成されました' ));
                 MetadataConnectionWarning = false;
             }else if( metadataResponse !=null ){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, metadataResponse));
                 MetadataConnectionWarning = true;
             }
             return null;
-    } 
-    
+    }
+
 }

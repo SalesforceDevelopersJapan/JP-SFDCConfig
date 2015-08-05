@@ -1,0 +1,5 @@
+{
+	"sf_username" : "your username",
+	"sf_password" : "yourpassword",
+	"sf_serverurl" : "login.salesforce.com"
+}

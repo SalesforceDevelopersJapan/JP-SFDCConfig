@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>IsPaidMonthly__c</fullName>
-        <label>Is paid monthly</label>
+        <label>月払い</label>
         <defaultValue>false</defaultValue>
         <type>Checkbox</type>
     </fields>
@@ -13,7 +13,7 @@
         <precision>12</precision>
         <scale>0</scale>
     </fields>
-    <label>Rebates Configuration</label>
-    <pluralLabel>Rebates Configurations</pluralLabel>
+    <label>割引設定</label>
+    <pluralLabel>割引設定</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

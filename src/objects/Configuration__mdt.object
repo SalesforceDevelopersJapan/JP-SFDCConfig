@@ -2,25 +2,25 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Vertical__c</fullName>
-        <label>Vertical</label>
+        <label>水平</label>
         <length>200</length>
         <type>Text</type>
     </fields>
     <fields>
         <fullName>AccuracyLevel__c</fullName>
-        <label>Accuracy level</label>
+        <label>精度レベル</label>
         <length>200</length>
         <type>Text</type>
     </fields>
     <fields>
         <fullName>IsSpecial__c</fullName>
-        <label>Boolean Configuration</label>
+        <label>特別</label>
         <defaultValue>false</defaultValue>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Rounding__c</fullName>
-        <label>Rounding Precision</label>
+        <label>丸め精度</label>
         <type>Number</type>
         <precision>12</precision>
         <scale>0</scale>
@@ -32,7 +32,7 @@
         <precision>12</precision>
         <scale>0</scale>
     </fields>
-    <label>Configuration</label>
-    <pluralLabel>Configurations</pluralLabel>
+    <label>設定</label>
+    <pluralLabel>設定</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

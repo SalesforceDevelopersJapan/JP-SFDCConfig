@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    
-    <description>This is the sample default base  generic configuration which would be packaged together</description>
-    
-    <label>Default package configuration</label>
-    
+
+    <description>パッケージ化して配布することのできるサンプル構成です</description>
+
+    <label>サンプルのパッケージ構成</label>
+
     <values>
         <field>Vertical__c</field>
         <value xsi:type="xsd:string">Pharma</value>
@@ -25,5 +25,5 @@
         <field>TabIndex__c</field>
         <value xsi:type="xsd:int">0</value>
     </values>
-    
+
 </CustomMetadata>

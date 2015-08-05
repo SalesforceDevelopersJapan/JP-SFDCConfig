@@ -1,0 +1,16 @@
+{
+  "name": "JP-SFDCConfig",
+  "version": "1.0.0",
+  "description": "Custom Metadata demo app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saelsforce Developers Japan",
+  "license": "for demo only",
+  "devDependencies": {
+    "jsforce": "^1.4.1",
+    "gulp": "^3.9.0",
+    "gulp-zip": "^3.0.2",
+    "through2": "^2.0.0"
+  }
+}
