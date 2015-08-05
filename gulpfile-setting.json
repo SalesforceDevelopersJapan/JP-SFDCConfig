@@ -1,5 +1,5 @@
 {
-	"sf_username" : "mo@li.training.org",
-	"sf_password" : "sfdcj12345",
+	"sf_username" : "(username)",
+	"sf_password" : "(password)",
 	"sf_serverurl" : "login.salesforce.com"
 }

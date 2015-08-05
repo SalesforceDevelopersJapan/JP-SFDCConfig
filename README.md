@@ -1,21 +1,22 @@
-#### Description
+#### 概要
 
-Custom Metadata Type will be available in Summer 2015 and will enable salesforce developer to create custom packageable records !
+カスタムメタデータタイプはSummer 2015で正式リリースされ、開発者はカスタムのパッケージ可能なレコードの作成が可能です。
 
-This sample application demonstrates how to use custom metadata types to build a standard configuration screen similar to the Settings Manager built by SalesforceFoundation/Cumulus  <a href="https://github.com/SalesforceFoundation/Cumulus/blob/dev/src/pages/STG_SettingsManager.page" target="_blank">Settings Manager</a> . Custom metadata types are superior to list custom settings or custom objects for application configurations. The latter require writing post-install scripts or loading data manually after each deployment. Custom metadata types automate that process. 
+このサンプルアプリケーションではどのようにカスタムメタデータタイプを使って、SalesforceFoundation/Cumulus の設定マネージャー(<a href="https://github.com/SalesforceFoundation/Cumulus/blob/dev/src/pages/STG_SettingsManager.page">Settings Manager</a>)の様な標準的な設定ページを作成するかを説明しています。
+カスタムメタデータタイプはカスタム設定のリストや設定用に作成したカスタムオブジェクトより優れています。後者の場合はインストール前のスクリプトやデータを手動でロードするなどの処理を各環境で行わなければなりません。カスタムメタデータ型はこの様なプロセスを自動化します。
 
-The other nice advantage is that Custom Metadata Records are stored in memory and are exempted from number of SOQL limits even if SOQL functionality is more limited.
+さらに他の利点として、カスタムメタデータのレコードはメモリに保持され、SOQLのガバナから除外されるため、SOQLのリミットをより広く使うことができます。
 
-This sample application is also using the great <a href="https://github.com/financialforcedev/apex-mdapi" target="_blank">Apex metadata wrapper api</a> framework.
+このサンプルアプリケーションは <a href="https://github.com/financialforcedev/apex-mdapi">Apex metadata wrapper api</a> フレームワークを利用しています。
 
-Below is a preview of the UI :
+以下がUIのプレビューです :
 
-![MConfiguration App Demo Screenshot](https://github.com/jbpringuey/SFDCConfig/blob/master/images/Configuration.png)
+![MConfiguration App Demo Screenshot](https://github.com/SalesforceDevelopersJapan/JP-SFDCConfig/blob/master/images/Configuration.png)
 
-Custom Metadata helps you make deployment to various orgs less painfull :
+カスタムメタデータは多くの組織へデプロイを行う際の負担を軽減します :
 
-![Deploy to prod Screenshot](https://github.com/jbpringuey/SFDCConfig/blob/master/images/DeployToProd.png)
+![Deploy to prod Screenshot](https://github.com/SalesforceDevelopersJapan/JP-SFDCConfig/blob/master/images/DeployToProd.png)
 
-Custom Metadata helps you better distribute your packages with custom metadata :
+カスタムメタデータはメタデータを持つパッケージの配布を助けます :
 
-![ISV intallation Screenshot](https://github.com/jbpringuey/SFDCConfig/blob/master/images/ISVInstallation.png)
+![ISV intallation Screenshot](https://github.com/SalesforceDevelopersJapan/JP-SFDCConfig/blob/master/images/ISVInstallation.png)
